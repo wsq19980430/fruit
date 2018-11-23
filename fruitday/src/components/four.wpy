@@ -1,0 +1,68 @@
+<!--  -->
+<template>
+  <view class='four'>
+    <view>
+      <image src='/imgs/5.jpg'/>
+      <text>产地直采</text>
+    </view>
+    <view>
+      <image src='/imgs/5.jpg'/>
+      <text>品控质检</text>
+    </view>
+    <view>
+      <image src='/imgs/5.jpg'/>
+      <text>全程冷链</text>
+    </view>
+    <view>
+      <image src='/imgs/5.jpg'/>
+      <text>专享客服</text>
+    </view>
+  </view>
+</template>
+
+<script>
+  import wepy from 'wepy'
+  export default class four extends wepy.component {
+    props = {};
+
+    data = {};
+
+    components = {};
+
+    methods = {};
+
+    events = {};
+
+    watch = {};
+
+    computed = {};
+
+    onLoad() {};
+
+    onShow() {};
+  }
+</script>
+
+<style lang='scss'>
+  .four {
+    width: 100%;
+    height:60rpx;
+    display: flex;
+    >view {
+      width: 25%;
+      height:100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      image {
+        width: 15%;
+        height: 50%;
+      }
+      text {
+        font-size: 30rpx;
+        color: #E19C57;
+        margin-left: 10rpx;
+      }
+    }
+  }
+</style>

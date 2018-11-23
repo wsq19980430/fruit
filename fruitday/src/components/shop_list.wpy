@@ -1,0 +1,93 @@
+<!--  -->
+<template>
+  <view class='shop_list'>
+    <view class='left'>
+      <text wx:for='{{list}}' wx:for-item='item' wx:key='index' @tap='FruitsList({{index}})'>{{item.fruits}}</text>
+    </view>
+    <view class='right'>
+      <view>
+        <block wx:for='{{list[text].fruits_list}}' wx:for-item='item' wx:key='index'>
+          <view>
+            <view class='img'>
+              <image src="{{item.url}}" mode="scaleToFill"/>
+            </view>
+            <tetx>{{item.text}}</tetx>
+          </view>
+        </block>
+      </view>
+    </view>
+  </view>
+</template>
+
+<script>
+  import wepy from 'wepy'
+  export default class shoplist extends wepy.component {
+    props = {
+      list: {
+        type: Array,
+        default: []
+      }
+    };
+
+    data = {
+      text: 0
+    };
+
+    components = {};
+
+    methods = {
+      FruitsList (index) {
+        this.text = index
+        this.$apply()
+      }
+    };
+
+    events = {};
+
+    watch = {};
+
+    computed = {};
+
+    onLoad() { };
+
+    onShow() { };
+  }
+</script>
+
+<style lang='scss'>
+  .shop_list {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    overflow: hidden;
+    .left {
+      width: 25%;
+      height: 100%;
+      background:#F5F5F5;
+      text-align: center;
+      line-height: 3;
+      text {
+        display: block;
+        font-size: 30rpx;
+      }
+    }
+    .right {
+      width: 75%;
+      >view{
+        display: flex;
+        flex-wrap: wrap;
+        >view {
+        width:33.3%;
+        text-align: center;
+        .img {
+          height: 200rpx;
+          image {
+            width: 100%;
+            height:100%;
+          }
+        }
+      }
+      }
+    }
+  }
+</style>

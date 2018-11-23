@@ -1,0 +1,197 @@
+<!--  -->
+<template>
+  <ShopList :list.sync='list'></ShopList>
+</template>
+
+<script>
+  import wepy from 'wepy'
+  import ShopList from '@/components/shop_list'
+  export default class classification extends wepy.page {
+    config = {
+      navigationBarTitleText: ''
+    };
+
+    data = {
+      list: [
+        {
+          fruits: '果园优选',
+          fruits_list: [
+            {
+              url: '/imgs/fruits1.jpg',
+              text: '奇异果'
+            },
+            {
+              url: '/imgs/fruits2.jpg',
+              text: '苹果'
+            },
+            {
+              url: '/imgs/fruits3.jpg',
+              text: '橙柑橘柚'
+            },
+            {
+              url: '/imgs/fruits4.jpg',
+              text: '蓝莓/莓类'
+            },
+            {
+              url: '/imgs/fruits5.jpg',
+              text: '牛油果'
+            }
+          ]
+        },
+        {
+          fruits: '中秋礼盒',
+          fruits_list: [
+            {
+              url: '/imgs/fruits6.jpg',
+              text: '中秋好礼'
+            }
+          ]
+        },
+        {
+          fruits: '新鲜水果',
+          fruits_list: [
+            {
+              url: '/imgs/fruits1.jpg',
+              text: '中秋好礼'
+            },
+            {
+              url: '/imgs/fruits2.jpg',
+              text: '苹果'
+            },
+            {
+              url: '/imgs/fruits3.jpg',
+              text: '橙柑橘柚'
+            },
+            {
+              url: '/imgs/fruits7.jpg',
+              text: '蓝莓、莓类'
+            },
+            {
+              url: '/imgs/fruits5.jpg',
+              text: '牛油果'
+            },
+            {
+              url: '/imgs/fruits8.jpg',
+              text: '葡萄/提子'
+            },
+            {
+              url: '/imgs/fruits9.jpg',
+              text: '热带水果'
+            },
+            {
+              url: '/imgs/fruits10.jpg',
+              text: '石榴'
+            },
+            {
+              url: '/imgs/fruits11.jpg',
+              text: '凤梨/菠萝'
+            },
+            {
+              url: '/imgs/fruits12.jpg',
+              text: '柠檬'
+            },
+            {
+              url: '/imgs/fruits13.jpg',
+              text: '香蕉'
+            },
+            {
+              url: '/imgs/fruits14.jpg',
+              text: '火龙果'
+            },
+            {
+              url: '/imgs/fruits15.jpg',
+              text: '瓜类'
+            },
+            {
+              url: '/imgs/fruits16.jpg',
+              text: '桃李杏梅'
+            },
+            {
+              url: '/imgs/fruits17.jpg',
+              text: '椰子'
+            }
+          ]
+        },
+        {
+          fruits: '粮油干货',
+          fruits_list: [
+            {
+              url: '/imgs/fruits18.jpg',
+              text: '米面'
+            },
+            {
+              url: '/imgs/fruits19.jpg',
+              text: '食用油'
+            },
+            {
+              url: '/imgs/fruits20.jpg',
+              text: '南北干货'
+            },
+            {
+              url: '/imgs/fruits21.jpg',
+              text: '五谷杂粮'
+            }
+          ]
+        },
+        {
+          fruits: '冲调保健',
+          fruits_list: [
+            {
+              url: '/imgs/fruits22.jpg',
+              text: '保健'
+            },
+            {
+              url: '/imgs/fruits23.jpg',
+              text: '冲调'
+            }
+          ]
+        },
+        {
+          fruits: '果园周边',
+          fruits_list: [
+            {
+              url: '/imgs/fruits24.jpg',
+              text: '果园周边'
+            }
+          ]
+        },
+        {
+          fruits: '礼盒券卡',
+          fruits_list: [
+            {
+              url: '/imgs/fruits25.jpg',
+              text: '中秋礼盒'
+            },
+            {
+              url: '/imgs/fruits26.jpg',
+              text: '生鲜礼盒'
+            },
+            {
+              url: '/imgs/fruits27.jpg',
+              text: '充值券卡'
+            }
+          ]
+        }
+      ]
+    };
+
+    components = {
+      ShopList
+    };
+
+    methods = {};
+
+    events = {};
+
+    watch = {};
+
+    computed = {};
+
+    onLoad() { };
+
+    onShow() { };
+  }
+</script>
+
+<style lang='scss'>
+</style>

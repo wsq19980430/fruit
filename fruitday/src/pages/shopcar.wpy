@@ -1,0 +1,177 @@
+<!--  -->
+<template>
+  <view class='big'>
+    <view class='shopcar' wx:if='{{arr.length==0}}'>
+      <image src='/imgs/12.jpg'/>
+      <text>{{islogin?'':'当前未登录'}}</text>
+      <button class="submit {{islogin?'active':''}}" @tap='login'>{{islogin?'已登录':'去登录'}}</button>
+      <navigator url='/pages/homepage' open-type='switchTab' class="{{islogin?'':'active'}}">去首页逛逛</navigator>
+    </view>
+    <view class='list' wx:if='{{arr.length>0}}'>
+      <view wx:for='{{arr}}' wx:for-item='item' wx:key='index'>
+        <image src='{{item.url}}'/>
+        <view>
+          <view class='h1'>{{item.h1}}</view>
+          <view class='tit'>{{item.tit}}</view>
+          <view class='num'>+{{item.num}}</view>
+        </view>
+      </view>
+      <view class='footer'>
+        <view>合计：<text>{{sum}}</text></view>
+        <view>数量：<text>{{num}}</text></view>
+      </view>
+    </view>
+  </view>
+</template>
+
+<script>
+  import wepy from 'wepy'
+  export default class shopcar extends wepy.page {
+    config = {
+      navigationBarTitleText: '购物车'
+    };
+
+    data = {
+      islogin: false,
+      arr: [],
+      num: 0,
+      sum: 0
+    };
+
+    components = {};
+
+    methods = {
+      login () {
+        this.islogin = !this.islogin
+      }
+    };
+
+    getCont () {
+      let num = 0
+      let sum = 0
+      this.arr.forEach((item, index) => {
+        num += item.num
+        sum += item.num * item.price
+      })
+      this.num = num
+      this.sum = sum
+    }
+
+    events = {};
+
+    watch = {};
+
+    computed = {};
+
+    onLoad() {
+      wepy.getStorage({
+        key: 'list',
+        success: (res) => {
+          this.arr = res.data
+          this.$apply()
+          this.getCont()
+        }
+      })
+    };
+
+    onShow() {
+      wepy.getStorage({
+        key: 'list',
+        success: (res) => {
+          this.arr = res.data
+          this.$apply()
+          this.getCont()
+        }
+      })
+    };
+  }
+</script>
+
+<style lang='scss'>
+  .big {
+    width: 100%;
+    height: 100%;
+  }
+  .shopcar {
+    width: 100%;
+    height: 100%;
+    background:#F5F5F5;
+    image {
+      width: 70%;
+      height: 400rpx;
+      margin:80rpx 15%;
+    }
+    text {
+      display: block;
+      text-align: center;
+      font-size: 34rpx;
+      line-height: 2;
+    }
+    button {
+      width: 80%;
+      margin:50rpx 10%;
+      font-size: 34rpx;
+      background:#FF8000;
+      color: #fff;
+    }
+    navigator {
+      width: 80%;
+      height:80rpx;
+      margin:50rpx 10%;
+      font-size: 34rpx;
+      border:2rpx solid #858585;
+      border-radius: 10rpx;
+      color:#858585;
+      text-align: center;
+      line-height: 80rpx;
+    }
+  }
+  .active {
+    display: none;
+  }
+  .list {
+    width: 100%;
+    height: 100%;
+    >view {
+      width: 100%;
+      height: 260rpx;
+      border-bottom:2rpx solid #ccc;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      image {
+        width: 25%;
+        height: 200rpx;
+      }
+      >view {
+        width:60%;
+        >view {
+          line-height: 2;
+        }
+        .h1 {
+          font-size: 38rpx;
+        }
+        .tit {
+          font-size: 32rpx;
+          color: #848484;
+        }
+        .num {
+          margin-left:80%;
+        }
+      }
+    }
+    .footer {
+      width: 100%;
+      height:100rpx;
+      border-top:2rpx solid #ccc;
+      position: absolute;
+      bottom: 0;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      >view {
+        text-align: center;
+      }
+    }
+  }
+</style>

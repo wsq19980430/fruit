@@ -1,0 +1,81 @@
+<!--  -->
+<template>
+  <view class='two'>
+    <view>
+      <icon class='iconfont icon-sao'></icon>
+      <text>扫一扫</text>
+    </view>
+    <view>
+      <icon class='iconfont icon-erweima'></icon>
+      <text>会员码</text>
+    </view>
+  </view>
+</template>
+
+<script>
+  import wepy from 'wepy'
+  export default class two extends wepy.component {
+    props = {};
+
+    data = {};
+
+    components = {};
+
+    methods = {};
+
+    events = {};
+
+    watch = {};
+
+    computed = {};
+
+    onLoad() { };
+
+    onShow() { };
+  }
+</script>
+
+<style lang='scss'>
+  .two {
+    width:100%;
+    height:100rpx;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    >view {
+      width: 20%;
+      height:70%;
+      border:2rpx solid #ccc;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding:0 10%;
+      border-radius: 40rpx;
+      box-shadow: 0 0 15rpx #ccc;
+    }
+  }
+  @font-face {
+    font-family: 'iconfont';  /* project id 818154 */
+    src: url('//at.alicdn.com/t/font_818154_3adp2t8q9f4.eot');
+    src: url('//at.alicdn.com/t/font_818154_3adp2t8q9f4.eot?#iefix') format('embedded-opentype'),
+    url('//at.alicdn.com/t/font_818154_3adp2t8q9f4.woff') format('woff'),
+    url('//at.alicdn.com/t/font_818154_3adp2t8q9f4.ttf') format('truetype'),
+    url('//at.alicdn.com/t/font_818154_3adp2t8q9f4.svg#iconfont') format('svg');
+  }
+  .iconfont {
+    font-family: "iconfont" !important;
+    font-size: 25px;
+    font-style: normal;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  .icon-sao:before {
+    content: '\e607';
+  }
+  .icon-erweima:before {
+    content: '\e604';
+  }
+  text {
+    font-size: 30rpx;
+  }
+</style>

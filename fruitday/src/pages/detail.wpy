@@ -1,0 +1,98 @@
+<!--  -->
+<template>
+  <view class='detail'>
+    <image src='{{list.url}}'/>
+    <text>{{list.h1}}</text>
+  </view>
+</template>
+
+<script>
+  import wepy from 'wepy'
+  export default class detail extends wepy.page {
+    config = {
+      navigationBarTitleText: ''
+    };
+
+    data = {
+      buyer: [
+        {
+          id: 1,
+          url: '/imgs/6.jpg',
+          h1: '月圆中秋 好礼相送',
+          tit: '2018中秋明月千里礼盒A款',
+          price: 218,
+          num: 0
+        },
+        {
+          id: 2,
+          url: '/imgs/7.jpg',
+          h1: '双福配莲蓉 传统中秋圆',
+          tit: '美心双黄莲蓉圆饼（4个装）',
+          price: 308,
+          num: 0
+        },
+        {
+          id: 3,
+          url: '/imgs/8.jpg',
+          h1: '能量巨果 一口爆浆过瘾',
+          tit: '佳沛新西兰阳光金奇异果',
+          price: 199,
+          num: 0
+        },
+        {
+          id: 4,
+          url: '/imgs/9.jpg',
+          h1: '低糖低卡 躺着喝也不长肉',
+          tit: '深井冰椰青（原箱）赠开椰器',
+          price: 99,
+          num: 0
+        },
+        {
+          id: 5,
+          url: '/imgs/10.jpg',
+          h1: '每天都要很健康',
+          tit: '越南红心火龙果',
+          price: 69.9,
+          num: 0
+        },
+        {
+          id: 6,
+          url: '/imgs/11.jpg',
+          h1: '正宗哈密瓜 比糖还要甜',
+          tit: '新疆西州蜜瓜',
+          price: 62.5,
+          num: 0
+        }
+      ],
+      list: {}
+    };
+
+    components = {};
+
+    methods = {};
+
+    events = {};
+
+    watch = {};
+
+    computed = {};
+
+    onLoad(query) {
+      this.buyer.forEach((item, index) => {
+        if (item.id == query.id) {
+          this.list = item
+          this.$apply()
+        }
+        console.log(this.list)
+      })
+    };
+
+    onShow() {};
+  }
+</script>
+
+<style lang='scss'>
+  image {
+    width: 100%;
+  }
+</style>

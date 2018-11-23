@@ -1,0 +1,105 @@
+<style lang="less">
+page {
+  width: 100%;
+  height: 100%;
+}
+</style>
+
+<script>
+import wepy from 'wepy'
+import 'wepy-async-function'
+
+import { setStore } from 'wepy-redux'
+import configStore from './store'
+
+const store = configStore()
+setStore(store)
+
+export default class extends wepy.app {
+  config = {
+    pages: [
+      'pages/homepage',
+      'pages/shopcar',
+      'pages/classification',
+      'pages/my',
+      'pages/detail'
+    ],
+    window: {
+      backgroundTextStyle: 'light',
+      navigationBarBackgroundColor: '#fff',
+      navigationBarTitleText: '天天果园',
+      navigationBarTextStyle: 'black',
+      enablePullDownRefresh: true,
+      onReachBottomDistance: 50
+    },
+    tabBar: {
+      selectedColor: '#64A02F',
+      list: [
+        {
+          pagePath: 'pages/homepage',
+          text: '首页',
+          iconPath: 'icon/首页.png',
+          selectedIconPath: 'icon/首页 (1).png'
+        },
+        {
+          pagePath: 'pages/classification',
+          text: '分类',
+          iconPath: 'icon/分类.png',
+          selectedIconPath: 'icon/分类 (1).png'
+        },
+        {
+          pagePath: 'pages/shopcar',
+          text: '购物车',
+          iconPath: 'icon/购物车.png',
+          selectedIconPath: 'icon/购物车 (1).png'
+        },
+        {
+          pagePath: 'pages/my',
+          text: '我的果园',
+          iconPath: 'icon/个人.png',
+          selectedIconPath: 'icon/个人 (1).png'
+        }
+      ]
+    }
+  }
+
+  globalData = {
+    userInfo: null
+  }
+
+  constructor () {
+    super()
+    this.use('requestfix')
+  }
+
+  onLaunch() {
+    this.testAsync()
+  }
+
+  sleep (s) {
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
+        resolve('promise resolved')
+      }, s * 1000)
+    })
+  }
+
+  async testAsync () {
+    const data = await this.sleep(3)
+    console.log(data)
+  }
+
+  getUserInfo(cb) {
+    const that = this
+    if (this.globalData.userInfo) {
+      return this.globalData.userInfo
+    }
+    wepy.getUserInfo({
+      success (res) {
+        that.globalData.userInfo = res.userInfo
+        cb && cb(res.userInfo)
+      }
+    })
+  }
+}
+</script>

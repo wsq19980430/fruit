@@ -1,0 +1,32 @@
+<!--  -->
+<template>
+  <view class='my'>我的果园</view>
+</template>
+
+<script>
+  import wepy from 'wepy';
+  export default class my extends wepy.page {
+    config = {
+      navigationBarTitleText: "",
+    };
+
+    data = {};
+
+    components = {};
+
+    methods = {};
+
+    events = {};
+
+    watch = {};
+
+    computed = {};
+
+    onLoad() { };
+
+    onShow() { };
+  }
+</script>
+
+<style lang='scss'>
+</style>

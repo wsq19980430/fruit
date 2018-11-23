@@ -1,0 +1,196 @@
+<!--  -->
+<template>
+  <view class='homepage'>
+    <view style='background: #fff; width: 100%; margin-bottom: 20rpx;'>
+      <Swiper :imgs.sync='imgs'></Swiper>
+      <Four></Four>
+      <Two></Two>
+      <Icon1></Icon1>
+    </view>
+    <view style='background: #fff; width: 100%; margin-bottom: 20rpx;'>
+      <FruitsList :buyer.sync='buyer'></FruitsList>
+    </view>
+  </view>
+</template>
+
+<script>
+  import wepy from 'wepy'
+
+  import Swiper from '@/components/swiper'
+  import Four from '@/components/four'
+  import Two from '@/components/two'
+  import Icon1 from '@/components/icon-1'
+
+  import FruitsList from '@/components/fruits_list'
+  export default class homepage extends wepy.page {
+    data = {
+      imgs: [
+        '/imgs/1.jpg',
+        '/imgs/2.jpg'
+      ],
+      buyer: [
+        {
+          id: 1,
+          url: '/imgs/6.jpg',
+          h1: '月圆中秋 好礼相送',
+          tit: '2018中秋明月千里礼盒A款',
+          price: 218,
+          num: 0
+        },
+        {
+          id: 2,
+          url: '/imgs/7.jpg',
+          h1: '双福配莲蓉 传统中秋圆',
+          tit: '美心双黄莲蓉圆饼（4个装）',
+          price: 308,
+          num: 0
+        },
+        {
+          id: 3,
+          url: '/imgs/8.jpg',
+          h1: '能量巨果 一口爆浆过瘾',
+          tit: '佳沛新西兰阳光金奇异果',
+          price: 199,
+          num: 0
+        },
+        {
+          id: 4,
+          url: '/imgs/9.jpg',
+          h1: '低糖低卡 躺着喝也不长肉',
+          tit: '深井冰椰青（原箱）赠开椰器',
+          price: 99,
+          num: 0
+        },
+        {
+          id: 5,
+          url: '/imgs/10.jpg',
+          h1: '每天都要很健康',
+          tit: '越南红心火龙果',
+          price: 69.9,
+          num: 0
+        },
+        {
+          id: 6,
+          url: '/imgs/11.jpg',
+          h1: '正宗哈密瓜 比糖还要甜',
+          tit: '新疆西州蜜瓜',
+          price: 62.5,
+          num: 0
+        }
+      ]
+    };
+
+    components = {
+      Swiper,
+      Four,
+      Two,
+      Icon1,
+      FruitsList
+    };
+
+    methods = {};
+
+    events = {
+      'add': (ind, $event) => {
+        this.buyer.forEach((item, index) => {
+          if (index === ind) {
+            ++item.num
+            this.Storage()
+          }
+        })
+      },
+      'rem': (ind, $event) => {
+        this.buyer.forEach((item, index) => {
+          if (index === ind) {
+            --item.num
+            this.Storage()
+          }
+        })
+      }
+    };
+
+    Storage () {
+      const arr = []
+      this.buyer.forEach((item, index) => {
+        if (item.num) {
+          arr.push(item)
+        }
+      })
+      wepy.setStorage({
+        key: 'list',
+        data: arr
+      })
+    }
+
+    watch = {};
+
+    computed = {};
+
+    onLoad() {};
+
+    onShow() {};
+
+    onPullDownRefresh() {}
+
+    onReachBottom() {
+      this.buyer = this.buyer.concat(
+        [
+          {
+            id: 1,
+            url: '/imgs/6.jpg',
+            h1: '月圆中秋 好礼相送',
+            tit: '2018中秋明月千里礼盒A款',
+            price: 218,
+            num: 0
+          },
+          {
+            id: 2,
+            url: '/imgs/7.jpg',
+            h1: '双福配莲蓉 传统中秋圆',
+            tit: '美心双黄莲蓉圆饼（4个装）',
+            price: 308,
+            num: 0
+          },
+          {
+            id: 3,
+            url: '/imgs/8.jpg',
+            h1: '能量巨果 一口爆浆过瘾',
+            tit: '佳沛新西兰阳光金奇异果',
+            price: 199,
+            num: 0
+          },
+          {
+            id: 4,
+            url: '/imgs/9.jpg',
+            h1: '低糖低卡 躺着喝也不长肉',
+            tit: '深井冰椰青（原箱）赠开椰器',
+            price: 99,
+            num: 0
+          },
+          {
+            id: 5,
+            url: '/imgs/10.jpg',
+            h1: '每天都要很健康',
+            tit: '越南红心火龙果',
+            price: 69.9,
+            num: 0
+          },
+          {
+            id: 6,
+            url: '/imgs/11.jpg',
+            h1: '正宗哈密瓜 比糖还要甜',
+            tit: '新疆西州蜜瓜',
+            price: 62.5,
+            num: 0
+          }
+        ]
+      )
+    }
+  }
+</script>
+
+<style lang='scss'>
+  page {
+    background: #F5F5F5;
+  }
+</style>
